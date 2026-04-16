@@ -12,11 +12,12 @@ connectDB();
 const app = express();
 
 // ─── CORS ────────────────────────────────────────────────────────────────────
-// Allow requests from local dev and any deployed frontend (set FRONTEND_URL on Render)
+// Allow requests from local dev and the deployed Netlify frontend
+// Set FRONTEND_URL on Render dashboard → e.g. https://your-app.netlify.app
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
-  process.env.FRONTEND_URL, // e.g. https://your-frontend.onrender.com
+  process.env.FRONTEND_URL, // Your Netlify URL
 ].filter(Boolean);
 
 app.use(cors({
@@ -28,7 +29,6 @@ app.use(cors({
   },
   credentials: true,
 }));
-
 app.use(express.json());
 
 // ─── Routes ──────────────────────────────────────────────────────────────────
