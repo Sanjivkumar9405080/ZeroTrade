@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: zerodha-backend
+    env: node
+    region: singapore       # pick the region closest to your users
+    rootDir: backend        # Render will cd into this folder
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000          # Render injects its own PORT; this is just a fallback
+      - key: MONGO_URI
+        sync: false           # ← set this manually in the Render dashboard
+      - key: JWT_SECRET
+        sync: false           # ← set this manually in the Render dashboard
+      - key: EMAIL_USER
+        sync: false           # ← set this manually in the Render dashboard
+      - key: EMAIL_PASS
+        sync: false           # ← set this manually in the Render dashboard
+      - key: FRONTEND_URL
+        sync: false           # ← paste your Vercel / Netlify / Render frontend URL here
