@@ -1,13 +1,11 @@
 [build]
-  base    = "frontend"        # Netlify runs commands from inside this folder
+  base    = "frontend"
   command = "npm install && npm run build"
-  publish = "dist"            # Vite outputs here
+  publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "22"
 
-# ── SPA fallback ──────────────────────────────────────────────────────────────
-# Without this, any direct URL like /dashboard returns a 404 on Netlify
 [[redirects]]
   from   = "/*"
   to     = "/index.html"
